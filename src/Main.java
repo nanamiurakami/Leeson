@@ -43,6 +43,24 @@ public class Main {
 		int num1=3;
 		int num2=5;
 		System.out.println("足し算の結果は"+(num1+num2));
+		
+		System.out.print("私は");
+		System.out.print("うらかみ");
+		System.out.println("です");
+		
+		int m = Math.max(10, 20);
+		System.out.println(m);
+		
+		String age = "31";
+		int nAge = Integer.parseInt(age);
+		System.out.println(age+1);
+		
+		int r = new java.util.Random().nextInt(90);
+		System.out.println(r);
+		
+		//さいころ　1から6までの乱数
+		int saikoro =new java.util.Random().nextInt(6)+1;
+		System.out.println(saikoro);
 	}
 
 }
