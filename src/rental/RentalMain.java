@@ -1,22 +1,15 @@
 package rental;
 
-import java.util.ArrayList;
-
 public class RentalMain {
 
 	public static void main(String[] args) {
-		ArrayList<Item> list = new ArrayList<Item>();
-		list.add(new Book("ワンピース",7));
-		list.add(new CD("パプリカ",3));
-		list.add(new CD("Lemon",1));
+		Rental r = new Rental();
+		r.add(new Book("ワンピース",7));
+		r.add(new CD("パプリカ",3));
+		r.add(new CD("Lemon",1));
 
-		int sum=0;
-		for (Item item : list) {
-			System.out.println(item);
-			sum += item.getPrice();
-		}
-		System.out.println("合計"+sum+"円");
+		r.show();
+		System.out.println("合計"+r.getGoukei()+"円");
+
 	}
-	
-
 }
