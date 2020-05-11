@@ -17,7 +17,7 @@ public class UriageDAO {
 		ArrayList<Uriage> list = new ArrayList<>();
 		try (Connection con = DriverManager.getConnection(URL,USER,PASS);){
 
-			String sql = "SELECT * FROM shouhin";
+			String sql = "SELECT * FROM uriage";
 			PreparedStatement stmt = con.prepareStatement(sql);
 
 			ResultSet rs = stmt.executeQuery();
@@ -34,7 +34,7 @@ public class UriageDAO {
 			stmt.close();
 
 		} catch (SQLException e) {
-			System.out.println("findAllエラー:"+e.getErrorCode());
+			System.out.println("findAllエラー:"+e.getMessage());
 		}
 		return list;
 	}
@@ -80,6 +80,32 @@ public class UriageDAO {
 		} catch (SQLException e) {
 			System.out.println("insertエラー:"+e.getMessage());
 		}
+	
+	}
+	public ArrayList<Uriage> findBySid(int sid) {
+		ArrayList<Uriage> list = new ArrayList<>();
+		try (Connection con = DriverManager.getConnection(URL,USER,PASS);){
+
+			String sql = "SELECT * FROM uriage WHERE sid=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, sid);
+
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				int uid = rs.getInt("uid");
+				int kosu = rs.getInt("kosu");
+				Date hi =rs.getDate("hi");
+
+				Uriage u = new Uriage (uid,sid,kosu,hi);
+				list.add(u);
+			}
+			stmt.close();
+
+		} catch (SQLException e) {
+			System.out.println("findBySidエラー:"+e.getMessage());
+		}
+		return list;
 	}
 
 }
